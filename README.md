@@ -1,8 +1,9 @@
 # Face-Clustering
 Clustering set of images based on the faces recognized using the DBSCAN clustering algorithm.
 
-Face recognition and face clustering are different, but highly related concepts. When performing face recognition we are applying *supervised learning* 
-where we have both (1) example images of faces we want to recognize along with (2) the names that correspond to each face (i.e., the “class labels”).
+Face recognition and face clustering are different. When performing face recognition we are applying *supervised learning* where we have both 
+- example images of faces we want to recognize along with 
+- the names that correspond to each face (i.e., the “class labels”).
 But in face clustering we need to perform *unsupervised learning* — we have only the faces themselves with no names/labels. 
 From there we need to identify and count the number of unique people in a dataset.
 
