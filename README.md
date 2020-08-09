@@ -1,4 +1,4 @@
-# Face-Clustering
+# Face-Clustering (done under Consulting & Analytics Club, IIT Guwahati)
 Clustering set of images based on the faces recognized using the DBSCAN clustering algorithm.
 
 Face recognition and face clustering are different. When performing face recognition we are applying *supervised learning* where we have both 
