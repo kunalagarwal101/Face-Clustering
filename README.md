@@ -67,8 +67,8 @@ Therefore, we need to use a density-based or graph-based clustering algorithm
 *Density-based spatial clustering of applications with noise (DBSCAN)*
 
 **Arguments:**
-- -i --encodings : The path to the encodings pickle file that we generated in our previous script.
-- -d --jobs : DBSCAN is multithreaded and a parameter can be passed to the constructor containing the number of parallel jobs to run. A value of -1 will use all CPUs available (default).  
+- -e --encodings : The path to the encodings pickle file that we generated in our previous script.
+- -j --jobs : DBSCAN is multithreaded and a parameter can be passed to the constructor containing the number of parallel jobs to run. A value of -1 will use all CPUs available (default).  
 - -o --output : The path to the clusters of faces.
 
 **What it does**

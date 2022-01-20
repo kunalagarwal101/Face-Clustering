@@ -15,12 +15,19 @@ from constants import ENCODINGS_PATH, CLUSTERING_RESULT_PATH
 
 # add constants file in the code (clustering_result)
 
-def move_image(image, id, labelID):
-    path = args['output'] + '/label' + str(labelID)
+def copy_image(image, id, labelID, montage=False):
+    if montage:
+        filename = "Face ID #{}".format(labelID) if labelID != 1 else "Unknown Faces"
+        path = args["output"] + "/montage/"
+    else:
+        filename = str(id)
+        path = args['output'] + '/label'
+        path += str(labelID) + '/'
+
+    filename += ".jpg"
 
     os.makedirs(path, exist_ok=True)
 
-    filename = str(id) + '.jpg'
     # Using cv2.imwrite() method
     # Saving the image
 
@@ -88,8 +95,8 @@ if __name__ == "__main__":
             (top, right, bottom, left) = data[i]["loc"]
             face = image[top:bottom, left:right]
 
-            # puting the image in the clustered folder
-            move_image(image, i, labelID)
+            # putting the image in the clustered folder
+            copy_image(image, i, labelID)
 
             # force resize the face ROI to 96mx96 and then add it to the
             # faces montage list
@@ -98,9 +105,5 @@ if __name__ == "__main__":
 
         # create a montage using 96x96 "tiles" with 5 rows and 5 columns
         montage = build_montages(faces, (96, 96), (5, 5))[0]
-
-        # show the output montage
-        title = "Face ID #{}".format(labelID)
-        title = "Unknown Faces" if labelID == -1 else title
-
-        cv2.imwrite(os.path.join(args['output'], title + '.jpg'), montage)
+        # write on disk
+        copy_image(montage, None, labelID, montage=True)
