@@ -52,7 +52,9 @@ encode_faces.py script will contains code used to extract a 128-d feature vector
 - Can be reused. write the data list to disk as a serialized encodings.pickle file
 
 **Usage - To run**  
-`python encode_faces.py --dataset dataset --encodings encodings.pickle --detection_method "cnn"`
+`python encode_faces.py`  
+or  
+`python encode_faces.py --dataset datasets/default_dataset --encodings encodings/encodings.pickle --detection_method "cnn"`
 
 
 # cluster_faces.py
@@ -66,7 +68,8 @@ Therefore, we need to use a density-based or graph-based clustering algorithm
 
 **Arguments:**
 - -i --encodings : The path to the encodings pickle file that we generated in our previous script.
-- -d --jobs : DBSCAN is multithreaded and a parameter can be passed to the constructor containing the number of parallel jobs to run. A value of -1 will use all CPUs available (default).
+- -d --jobs : DBSCAN is multithreaded and a parameter can be passed to the constructor containing the number of parallel jobs to run. A value of -1 will use all CPUs available (default).  
+- -o --output : The path to the clusters of faces.
 
 **What it does**
 - Loaded the facial encodings data from disk, Organized the data as a NumPy array, Extracted the 128-d encodings from the data , placing them in a list
@@ -75,7 +78,9 @@ Therefore, we need to use a density-based or graph-based clustering algorithm
 - We employ the build_montages function of imutils to generate a single image montage containing a 5×5 grid of faces
 
 **To run**  
-`python cluster_faces.py --encodings encodings.pickle --jobs -1`
+`python cluster_faces.py`  
+or  
+`python cluster_faces.py --encodings encodings/encodings.pickle --jobs -1 --output results/default_result`
 
 # Application
 
