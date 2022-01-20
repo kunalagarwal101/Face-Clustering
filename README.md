@@ -14,9 +14,11 @@ From there we need to identify and count the number of unique people in a datase
 The model is developed in the python language.
 
 ## Acknowledgement:
-- @ageitgey for the face_recognition library
+- @ageitgey for the face_recognition library (follow this [link](https://github.com/ageitgey/face_recognition) to install)
   
 ## Dependencies:
+Install manually the following dependencies:
+
 - face_recognition
 - imutils
 - sklearn.cluster
@@ -24,6 +26,13 @@ The model is developed in the python language.
 - pickle
 - openCV (cv2)
 - os
+
+Or:  
+`pip install -r requirements.txt`
+
+I tested it with the following version of python:
+
+- 3.8
 
 # encode_images.py
 encode_faces.py script will contains code used to extract a 128-d feature vector representation for each face.
@@ -42,8 +51,8 @@ encode_faces.py script will contains code used to extract a 128-d feature vector
   - The 128-d encoding itself
 - Can be reused. write the data list to disk as a serialized encodings.pickle file
 
-**Usage - To run**
-$python encode_faces.py --dataset dataset --encodings encodings.pickle --detection_method "cnn"
+**Usage - To run**  
+`python encode_faces.py --dataset dataset --encodings encodings.pickle --detection_method "cnn"`
 
 
 # cluster_faces.py
@@ -57,8 +66,7 @@ Therefore, we need to use a density-based or graph-based clustering algorithm
 
 **Arguments:**
 - -i --encodings : The path to the encodings pickle file that we generated in our previous script.
-- -d --jobs : DBSCAN is multithreaded and a parameter can be passed to the constructor containing the number of parallel jobs to run. 
-              A value of -1 will use all CPUs available (default).
+- -d --jobs : DBSCAN is multithreaded and a parameter can be passed to the constructor containing the number of parallel jobs to run. A value of -1 will use all CPUs available (default).
 
 **What it does**
 - Loaded the facial encodings data from disk, Organized the data as a NumPy array, Extracted the 128-d encodings from the data , placing them in a list
@@ -66,8 +74,8 @@ Therefore, we need to use a density-based or graph-based clustering algorithm
 - loop to populate all the images in the database, and check the cluster and create a directory for the cluster.
 - We employ the build_montages function of imutils to generate a single image montage containing a 5×5 grid of faces
 
-**To run**
-$python cluster_faces.py --encodings encodings.pickle --jobs -1
+**To run**  
+`python cluster_faces.py --encodings encodings.pickle --jobs -1`
 
 # Application
 
